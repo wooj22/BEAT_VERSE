@@ -649,6 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  isMove: 1
 --- !u!114 &5031624285100347788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,6 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2160b25704e0f804db3208f2540bd853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obRenderer: {fileID: 8785241150936937540}
   effect: {fileID: 2619877951003519192}
   maxCount: 2
 --- !u!1 &5766239457206557086

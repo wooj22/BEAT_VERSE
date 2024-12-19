@@ -290,7 +290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &91845279
 RectTransform:
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: a2213e960053fc545aa5fe9488dd5e96, type: 3}
-    m_FontSize: 170
+    m_FontSize: 130
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -358,7 +358,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GOOD !
+  m_Text: 
 --- !u!222 &91845282
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1911,6 +1911,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede3bb683bd188d48a983e5f21612ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playTime: 60
+  notes: {fileID: 135943260}
   stageNum: 0
 --- !u!1 &611901542
 GameObject:
@@ -3286,6 +3288,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
   - {fileID: 8300000, guid: 2667a0a008b044e218b63df62e2be749, type: 3}
   - {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  - {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
   fadeVolumeTime: 3
 --- !u!82 &1248745480
 AudioSource:

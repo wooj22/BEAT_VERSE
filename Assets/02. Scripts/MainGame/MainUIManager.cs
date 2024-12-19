@@ -103,6 +103,35 @@ public class MainUIManager : MonoBehaviour
         isStoped = !isStoped;
     }
 
+    // 게임 종료 UI
+    public void GameEndUI(int hit, int lose)
+    {
+        StartCoroutine(EndUI(hit, lose));
+    }
+
+    IEnumerator EndUI(int hit, int lose)
+    {
+        AdviceLable("Game End!");
+        yield return new WaitForSeconds(3f);
+
+        AdviceLable("Scoring...");
+        yield return new WaitForSeconds(3f);
+
+        // 점수 
+        adviceLable.fontSize = 80;
+        AdviceLable("Hit    " + hit +"\nLose    " + lose);
+        SoundManager.Instance.PlaySFX("SFX_Score");
+        yield return new WaitForSeconds(7f);
+
+        adviceLable.fontSize = 130;
+        AdviceLable("Go Main");
+        yield return new WaitForSeconds(3f);
+
+        StartCoroutine(FadeOut());
+        yield return new WaitForSeconds(3f);
+        SceneSwitch.Instance.SceneSwithcing("MainMenu");
+    }
+
     // 페이드인
     IEnumerator FadeIn()
     {

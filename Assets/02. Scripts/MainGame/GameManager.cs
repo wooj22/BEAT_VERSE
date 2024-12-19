@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int stageNum;    // 스테이지 정보
+    [SerializeField] private float playTime;
+    [SerializeField] private GameObject notes;
+    public int stageNum;
+
+    private int hitCount;
+    private int loseCount;
     private NoteManager noteManager;
 
     // 싱글톤
@@ -24,7 +29,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         noteManager = GameObject.Find("Note").GetComponent<NoteManager>();
-
         StageSetting();
     }
 
@@ -32,6 +36,8 @@ public class GameManager : MonoBehaviour
     private void StageSetting()
     {
         stageNum = PlayerPrefs.GetInt("StageNum", 1);
+        hitCount = 0;
+        loseCount = 0;
 
         switch (stageNum)
         {
@@ -57,11 +63,37 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         noteManager.NoteCreatingStart();    // 노트 생성 시작
-        Debug.Log("Game Start");
+        StartCoroutine(GameTime());
+    }
+
+    // 게임 시간 체크
+    IEnumerator GameTime()
+    {
+        int time = 0;
+        while(time < playTime)
+        {
+            yield return new WaitForSeconds(1f);
+            time++;
+        }
+        GameEnd();
+    }
+
+    public void Hit()
+    {
+        hitCount++;
+    }
+
+    public void Lose()
+    {
+        loseCount++;
     }
 
     public void GameEnd()
     {
         noteManager.NoteCreatingStop();    // 노트 생성 중단
+        notes.SetActive(false);
+        SoundManager.Instance.FadeOutBGM();
+        SoundManager.Instance.PlaySFX("SFX_GameEnd");
+        MainUIManager.Instance.GameEndUI(hitCount, loseCount);
     }
 }

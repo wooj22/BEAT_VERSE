@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CrashBeat : MonoBehaviour
 {
+    [SerializeField] SkinnedMeshRenderer obRenderer;
     [SerializeField] ParticleSystem effect;
     [SerializeField] int maxCount = 2;
     private int hitCount = 0;
@@ -19,15 +20,20 @@ public class CrashBeat : MonoBehaviour
             if(hitCount>= maxCount)
             {
                 GetComponent<NoteMove>().isMove = false;
+                obRenderer.enabled = false;
                 effect.Play();
                 SoundManager.Instance.PlaySFX("SFX_Hit");
-                Invoke(nameof(Hit), 2f);
+                Invoke(nameof(Hit), 1f);
+
+                GameManager.Instance.Hit();
             }
         }
         else if (other.gameObject.CompareTag("DeadLine"))
         {
-            this.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);          
             hitCount = 0;
+
+            GameManager.Instance.Lose();
         }
     }
 
@@ -35,6 +41,7 @@ public class CrashBeat : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         GetComponent<NoteMove>().isMove = true;
+        obRenderer.enabled = true;
         hitCount = 0;
     }
 }

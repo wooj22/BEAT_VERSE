@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  isMove: 1
 --- !u!136 &4861651781854154742
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -296,6 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f13efa3b4c25c545bb21add5524214d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obRenderer: {fileID: 2568436896561234051}
   effect: {fileID: 2579147350906122611}
   maxCount: 2
 --- !u!1 &7123664083116027065

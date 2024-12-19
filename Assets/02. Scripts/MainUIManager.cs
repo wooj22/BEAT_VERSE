@@ -5,52 +5,54 @@ using UnityEngine.UI;
 
 public class MainUIManager : MonoBehaviour
 {
-    [Header("FadeOutImage")]
-    [SerializeField] Image fade_front;
-    [SerializeField] Image fade_right;
-    [SerializeField] Image fade_left;
-    [SerializeField] Image fade_down;
-
-    /// 페이드인
-    public void FadeInImage()
+    [SerializeField] List<Image> fadeImageList;
+    private void Start()
     {
         StartCoroutine(FadeIn());
     }
 
-    /// 페이드아웃
-    public void FadeOutImage()
-    {
-        StartCoroutine(FadeOut());
-    }
-
+    // 페이드인
     IEnumerator FadeIn()
     {
         float fadeCount = 1;
-
-        while (fadeCount > 0.001f)
+        while (fadeCount > 0f)
         {
             fadeCount -= 0.01f;
             yield return new WaitForSeconds(0.01f);
 
-            fade_front.color = new Color(0, 0, 0, fadeCount);
-            fade_right.color = new Color(0, 0, 0, fadeCount);
-            fade_left.color = new Color(0, 0, 0, fadeCount);
-            fade_down.color = new Color(0, 0, 0, fadeCount);
+            for (int i = 0; i < fadeImageList.Count; i++)
+            {
+                fadeImageList[i].color = new Color(0, 0, 0, fadeCount);
+            }
+        }
+
+        for (int i = 0; i < fadeImageList.Count; i++)
+        {
+            fadeImageList[i].gameObject.SetActive(false);
         }
     }
 
+    // 페이드아웃
     IEnumerator FadeOut()
     {
+        for (int i = 0; i < fadeImageList.Count; i++)
+        {
+            fadeImageList[i].gameObject.SetActive(true);
+        }
+
         float fadeCount = 0;
         while (fadeCount < 1.0f)
         {
             fadeCount += 0.01f;
             yield return new WaitForSeconds(0.01f);
 
-            fade_front.color = new Color(0, 0, 0, fadeCount);
-            fade_right.color = new Color(0, 0, 0, fadeCount);
-            fade_left.color = new Color(0, 0, 0, fadeCount);
-            fade_down.color = new Color(0, 0, 0, fadeCount);
+            for (int i = 0; i < fadeImageList.Count; i++)
+            {
+                fadeImageList[i].color = new Color(0, 0, 0, fadeCount);
+            }
         }
+
+        yield return new WaitForSeconds(3f);
+        SceneSwitch.Instance.SceneSwithcing("MainMenu");
     }
 }

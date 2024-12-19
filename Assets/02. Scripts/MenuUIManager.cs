@@ -8,8 +8,9 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] GameObject gameStartUI;
     [SerializeField] GameObject stageUI;
     [SerializeField] GameObject stageStartUI;
-
     [SerializeField] Text StageDescriptionText;
+    [SerializeField] List<Image> fadeImageList;
+
     private int stageNum;
 
     // 메인 시작 버튼
@@ -51,7 +52,33 @@ public class MenuUIManager : MonoBehaviour
     // 스테이지 시작 버튼
     public void StageStartButton()
     {
-        PlayerPrefs.SetInt("StageNum", stageNum); 
+        PlayerPrefs.SetInt("StageNum", stageNum);
         //int stageNum = PlayerPrefs.GetInt("StageNum", 1);
+
+        StartCoroutine(FadeOut());
+    }
+
+    // 페이드아웃
+    IEnumerator FadeOut()
+    {
+        for(int i=0; i< fadeImageList.Count; i++)
+        {
+            fadeImageList[i].gameObject.SetActive(true);
+        }
+
+        float fadeCount = 0;
+        while (fadeCount < 1.0f)
+        {
+            fadeCount += 0.01f;
+            yield return new WaitForSeconds(0.01f);
+
+            for (int i = 0; i < fadeImageList.Count; i++)
+            {
+                fadeImageList[i].color = new Color(0, 0, 0, fadeCount);
+            }
+        }
+
+        yield return new WaitForSeconds(3f);
+        SceneSwitch.Instance.SceneSwithcing("MainGame");
     }
 }

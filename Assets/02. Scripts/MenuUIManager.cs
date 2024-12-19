@@ -33,15 +33,15 @@ public class MenuUIManager : MonoBehaviour
         switch (stageNum)
         {
             case 1:
-                StageDescriptionText.text = "Stage 1 \n Fun Fun";
+                StageDescriptionText.text = "Stage 1 \n Play?";
                 stageNum = 1;
                 break;
             case 2:
-                StageDescriptionText.text = "Stage 2 \n dddddd";
+                StageDescriptionText.text = "Stage 2 \n Play?";
                 stageNum = 2;
                 break;
             case 3:
-                StageDescriptionText.text = "Stage 3 \n cccccccc";
+                StageDescriptionText.text = "Stage 3 \n Play?";
                 stageNum = 3;
                 break;
 

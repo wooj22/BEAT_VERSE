@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class NoteGenerator : MonoBehaviour
 {
-    [Header ("Beat")]
+    [Header ("Beat Models")]
     [SerializeField] GameObject L_NomalBeat;
     [SerializeField] GameObject R_NomalBeat;
     [SerializeField] GameObject L_HitBeat;
     [SerializeField] GameObject R_HitBeat;
     [SerializeField] GameObject CrashBeat;
 
-    [Header("Data")]
+    [Header("Pulling Data")]
     [SerializeField] int LN_pmc;    // L_NomalBeat Pulling Max Count
     [SerializeField] int RN_pmc;    // R_NomalBeat Pulling Max Count
     [SerializeField] int LH_pmc;    // L_HitBeat Pulling Max Count
@@ -61,7 +61,7 @@ public class NoteGenerator : MonoBehaviour
         {
             GameObject beat = Instantiate(prefabs, GetPosition(), Quaternion.identity);
             beat.transform.SetParent(parents);
-            beat.SetActive(false);
+            //beat.SetActive(false);
             list.Add(beat);
         }
     }

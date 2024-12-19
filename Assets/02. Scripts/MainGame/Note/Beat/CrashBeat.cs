@@ -13,13 +13,15 @@ public class CrashBeat : MonoBehaviour
         if(other.gameObject.CompareTag("RightPlayer") ||
             other.gameObject.CompareTag("LeftPlayer"))
         {
+            Debug.Log("Hit");
             hitCount++;
 
             if(hitCount>= maxCount)
             {
+                GetComponent<NoteMove>().isMove = false;
                 effect.Play();
-                this.gameObject.SetActive(false);
-                hitCount = 0;
+                SoundManager.Instance.PlaySFX("SFX_Hit");
+                Invoke(nameof(Hit), 2f);
             }
         }
         else if (other.gameObject.CompareTag("DeadLine"))
@@ -27,5 +29,12 @@ public class CrashBeat : MonoBehaviour
             this.gameObject.SetActive(false);
             hitCount = 0;
         }
+    }
+
+    private void Hit()
+    {
+        this.gameObject.SetActive(false);
+        GetComponent<NoteMove>().isMove = true;
+        hitCount = 0;
     }
 }

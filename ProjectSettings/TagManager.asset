@@ -9,6 +9,8 @@ TagManager:
   - R_NomalBeat
   - L_HitBeat
   - R_HitBeat
+  - LeftPlayer
+  - RightPlayer
   layers:
   - Default
   - TransparentFX

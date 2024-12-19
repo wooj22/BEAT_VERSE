@@ -24,6 +24,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public AudioSource GetBgmSource()
+    {
+        return bgmSource;
+    }
+
     /// BGM
     public void SetBGM(string clipName)
     {

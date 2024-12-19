@@ -61,8 +61,45 @@ public class NoteGenerator : MonoBehaviour
         {
             GameObject beat = Instantiate(prefabs, GetPosition(), Quaternion.identity);
             beat.transform.SetParent(parents);
-            //beat.SetActive(false);
+            beat.SetActive(false);
             list.Add(beat);
+        }
+    }
+
+    // 비트선택 (1 크래쉬/ 2 히트/ 3 노말)
+    public void BeatChoice(int beatNum)
+    {
+        int num = 0;
+
+        switch (beatNum)
+        {
+            case 1:
+                ActivateBeat(cList);
+                break;
+            case 2:
+                num = Random.Range(0, 2);
+                if(num == 0) ActivateBeat(lhList);
+                else ActivateBeat(rhList);
+                break;
+            case 3:
+                num = Random.Range(0, 2);
+                if (num == 0) ActivateBeat(lnList);
+                else ActivateBeat(rnList);
+                break;
+        }
+    }
+
+    // 활성화
+    private void ActivateBeat(List<GameObject> beatList)
+    {
+        foreach (GameObject beat in beatList)
+        {
+            if (!beat.activeInHierarchy)
+            {
+                beat.transform.position = GetPosition();
+                beat.SetActive(true);
+                break;
+            }
         }
     }
 }

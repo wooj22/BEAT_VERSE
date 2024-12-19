@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int stageNum;    // 스테이지 정보
+    private NoteManager noteManager;
 
     // 싱글톤
     public static GameManager Instance { get; private set; }
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        noteManager = GameObject.Find("Note").GetComponent<NoteManager>();
+
         StageSetting();
     }
 
@@ -48,5 +51,17 @@ public class GameManager : MonoBehaviour
 
         SoundManager.Instance.FadeInBGM();
         MainUIManager.Instance.UIStart(stageNum);
+    }
+
+    // 게임 시작
+    public void GameStart()
+    {
+        noteManager.NoteCreatingStart();    // 노트 생성 시작
+        Debug.Log("Game Start");
+    }
+
+    public void GameEnd()
+    {
+        noteManager.NoteCreatingStop();    // 노트 생성 중단
     }
 }

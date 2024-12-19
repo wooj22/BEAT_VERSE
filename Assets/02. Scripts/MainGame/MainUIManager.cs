@@ -78,6 +78,8 @@ public class MainUIManager : MonoBehaviour
         AdviceLable("Start!");
         yield return new WaitForSeconds(3f);
         AdviceLable("");
+
+        GameManager.Instance.GameStart();
     }
 
     // 보조라벨

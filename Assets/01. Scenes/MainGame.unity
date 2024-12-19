@@ -1661,6 +1661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 566899890}
+  - component: {fileID: 566899891}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1683,6 +1684,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1436072488}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &566899891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566899889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede3bb683bd188d48a983e5f21612ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageNum: 0
 --- !u!1 &611901542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2915,6 +2929,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 1248745481}
   sfxSource: {fileID: 1248745480}
+  bgmClipList:
+  - {fileID: 8300000, guid: f1daef00e0ecee441aeb71972eac2307, type: 3}
   sfxClipList: []
   fadeVolumeTime: 3
 --- !u!82 &1248745480
@@ -4214,6 +4230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: R_HitBeat
       objectReference: {fileID: 0}
+    - target: {fileID: 8544062441633172346, guid: 28d7c2af8339f964b9f29cca2335413b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4265,6 +4285,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1274324377075305622, guid: 45a5f700bc019d24dabef0fb46b12e93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2931807386429752179, guid: 45a5f700bc019d24dabef0fb46b12e93, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8658916844232517231, guid: 45a5f700bc019d24dabef0fb46b12e93, type: 3}
@@ -4324,6 +4348,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6027675969042279839, guid: 8c93bf6fde677c44bab9393560335060, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7494199506933840236, guid: 8c93bf6fde677c44bab9393560335060, type: 3}
       propertyPath: m_Name
       value: L_NobalBeat
@@ -4344,6 +4372,10 @@ PrefabInstance:
     - target: {fileID: 5426811117211024796, guid: 4b836b3c2351548478c527e8388c9fa3, type: 3}
       propertyPath: m_Name
       value: CrashBeat
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449316966477286722, guid: 4b836b3c2351548478c527e8388c9fa3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7347951589977335272, guid: 4b836b3c2351548478c527e8388c9fa3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4440,6 +4472,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3262714914122782032, guid: 2777ea8142dfe65428b7ebfdb3152099, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955451828305548629, guid: 2777ea8142dfe65428b7ebfdb3152099, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

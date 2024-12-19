@@ -11,21 +11,48 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] Text adviceLable;
     [SerializeField] List<Image> fadeImageList;
 
-    private bool isStoped;
+    private bool isStoped = false;
 
-    private void Start()
+    // 싱글톤
+    public static MainUIManager Instance { get; private set; }
+    private void Awake()
     {
-        StartCoroutine(StartInfoUI());
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void UIStart(int stageNum)
+    {
+        StartCoroutine(StartInfoUI(stageNum));
     }
 
     // 게임 정보 UI
-    public IEnumerator StartInfoUI()
+    public IEnumerator StartInfoUI(int stageNum)
     {
         StartCoroutine(FadeIn());
 
         // 스테이지 정보
-        // 게임매니저에서 스테이지 정보 받아오는거 추가하기
-        stageNameText.text = "Stage 1"; 
+        switch (stageNum)
+        {
+            case 1:
+                stageNameText.text = "Stage 1";
+                break;
+            case 2:
+                stageNameText.text = "Stage 2";
+                break;
+            case 3:
+                stageNameText.text = "Stage 3";
+                break;
+            default:
+                stageNameText.text = "Stage 1";
+                break;
+        }
         yield return new WaitForSeconds(5f);
 
         // 게임설명
@@ -70,7 +97,8 @@ public class MainUIManager : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
-        
+
+        isStoped = !isStoped;
     }
 
     // 페이드인

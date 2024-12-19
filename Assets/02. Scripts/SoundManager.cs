@@ -6,12 +6,12 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] AudioSource bgmSource;
     [SerializeField] AudioSource sfxSource;
+    [SerializeField] List<AudioClip> bgmClipList;
     [SerializeField] List<AudioClip> sfxClipList;
     [SerializeField] float fadeVolumeTime = 3f;
 
-    public static SoundManager Instance { get; private set; }
-
     // ½Ì±ÛÅæ
+    public static SoundManager Instance { get; private set; }
     private void Awake()
     {
         if (Instance == null)
@@ -25,6 +25,11 @@ public class SoundManager : MonoBehaviour
     }
 
     /// BGM
+    public void SetBGM(string clipName)
+    {
+        bgmSource.clip = bgmClipList.Find(clip => clip.name == clipName);
+    }
+
     public void PlayBGM()
     {
         bgmSource.loop = true;

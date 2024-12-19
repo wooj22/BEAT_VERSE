@@ -53,8 +53,6 @@ public class MenuUIManager : MonoBehaviour
     public void StageStartButton()
     {
         PlayerPrefs.SetInt("StageNum", stageNum);
-        //int stageNum = PlayerPrefs.GetInt("StageNum", 1);
-
         StartCoroutine(FadeOut());
     }
 
